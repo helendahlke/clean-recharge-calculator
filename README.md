@@ -1,49 +1,68 @@
 # Clean Recharge Calculator
 
-An interactive educational screening tool for exploring how residual soil nitrate-N and applied water depth affect the **estimated average nitrate-N concentration** during agricultural managed aquifer recharge (Ag-MAR).
+An interactive, mobile-friendly educational tool for exploring how **residual soil nitrate-N might be diluted with clean recharge water** during agricultural managed aquifer recharge (Ag-MAR). The calculator estimates an **average pore water nitrate-N concentration** from a selected residual nitrate-N inventory and an applied recharge water depth.
 
-The calculator is a single, mobile-friendly webpage (`index.html`) that runs in a browser without installation or a server.
+**[Open the Clean Recharge Calculator](https://helendahlke.github.io/clean-recharge-calculator/)**
 
-## Use the calculator
+## How to use it
 
-1. Select a residual soil nitrate-N inventory: **25, 50, 100, or 200 lb N/acre**. These are illustrative categories, not established agronomic thresholds.
-2. Adjust the applied recharge water depth from **0.5 to 8 feet**.
-3. Read the estimated average nitrate-N concentration in **mg/L as N** and the idealized water depth required to reach **10 mg/L nitrate-N**.
+1. **Select residual soil nitrate-N** using one of eight bubbles: **5, 10, 15, 25, 40, 50, 75, or 100 lb N/acre**. The default is **25 lb N/acre**. These are illustrative nitrate inventories, not agronomic risk categories.
+2. **Move the applied recharge water slider** between **0.5 and 8 feet**, in 0.5-foot increments, to explore how the estimated pore water nitrate-N concentration changes. The default is **3 feet**.
+3. **Read the estimated average pore water nitrate-N concentration**, expressed in **mg/L NO₃-N**.
+4. **Review the water-depth threshold** shown for a calculated average concentration **below 10 mg/L NO₃-N**, the drinking-water maximum contaminant level for nitrate expressed as nitrogen. The displayed threshold corresponds to exactly 10 mg/L in this idealized model; strictly less than 10 mg/L requires more water.
+5. **Explore the graph**, which plots estimated average pore water nitrate-N concentration against applied water depth. The dashed horizontal line marks 10 mg/L; the dot marks the selected water depth.
 
-Residual nitrate-N is entered as an **areal inventory (lb N/acre)**, assumed to represent the upper 3 feet of soil. Because it is already an areal inventory, the calculation does not require bulk density or soil texture. If starting from a soil test reported in ppm (mg/kg dry soil), converting to lb N/acre requires the sampled depth and soil bulk density.
+## What does residual soil nitrate-N mean?
+
+Residual soil nitrate-N is nitrate nitrogen remaining in the soil after crop uptake. Farmers can estimate it from soil samples analyzed by a soil-testing laboratory.
+
+**The bubbles represent a nitrate-N inventory in pounds of nitrogen per acre (lb N/acre), not a concentration in ppm.** For interpretation, the tool assumes this inventory represents the upper **3 feet of soil**. If the soil laboratory reports nitrate-N in **ppm (mg/kg dry soil)**, converting that concentration to lb N/acre requires the **sampled depth and soil bulk density**. Do not enter a ppm value directly as lb N/acre.
+
+Although soil texture and bulk density influence the conversion from ppm to lb N/acre, they are **not additional inputs to this calculator** once the nitrate-N inventory is known.
 
 ## Calculation
 
-The tool converts the residual nitrate-N inventory to kg N/ha and applied water depth to centimeters, then computes:
+The calculator uses a simplified mass balance, assuming that all residual nitrate-N is flushed and mixed uniformly into all applied recharge water:
 
-`Estimated average NO3-N (mg/L) = [Residual nitrate-N (kg/ha) × 10] / [Applied water depth (cm)]`
+```text
+Estimated average pore water NO₃-N (mg/L)
+    = 0.3678109 × residual nitrate-N (lb N/acre)
+                ÷ applied recharge water depth (feet)
+```
 
-It also solves this equation for the applied water depth corresponding to a target of **10 mg/L NO3-N**. The incoming recharge water is assumed to contain no nitrate-N.
+The threshold water depth for an estimated average concentration of **10 mg/L NO₃-N** is:
+
+```text
+Threshold depth (feet)
+    = 0.3678109 × residual nitrate-N (lb N/acre) ÷ 10
+```
+
+The incoming recharge water is assumed to contain **zero nitrate-N**.
 
 ## Scientific assumptions and limitations
 
-This is a **simplified, complete-flushing mass balance**, not a vadose-zone transport model. It assumes:
+This is a **complete-flushing, uniform-dilution screening calculation**, **not** a vadose-zone flow or reactive transport model. It assumes:
 
-- The entire selected residual soil nitrate-N inventory is flushed into the percolating water.
-- All applied water becomes deep percolation and mixes uniformly with the nitrate inventory.
-- Incoming recharge water contains no nitrate-N.
-- Nitrate transformations, preferential flow, pre-existing soil water, retention, and groundwater mixing are ignored.
+- The entire selected residual soil nitrate-N inventory is mobilized and exported.
+- All applied water becomes deep percolation and mixes uniformly with that nitrate inventory.
+- Recharge water initially contains no nitrate-N.
+- Evaporation, antecedent soil-water deficits, pre-existing soil water, nitrate reactions, preferential flow, and deeper nitrate sources are not represented.
+- Travel time and mixing with groundwater are not represented.
 
-**Important:** Actual leachate can have a high-concentration initial nitrate pulse even if the calculated average is below 10 mg/L. The tool cannot predict the nitrate concentration at the water table or demonstrate compliance with groundwater-quality standards. Applying more water is not automatically a safe or practical nitrate-management strategy; field-specific measurements and management are needed.
+**Important:** Actual pore water and leachate concentrations can vary greatly with depth and time. An initial nitrate-rich flushing pulse may exceed **10 mg/L NO₃-N** even if the calculated average is below that value. The calculation **does not predict groundwater concentrations**, demonstrate drinking-water compliance, or establish a safe field application depth. Applying more water is not automatically a safe or practical nitrate-management strategy.
 
-The **10 mg/L NO3-N** comparison value is the U.S. drinking-water maximum contaminant level for nitrate expressed as nitrogen, not a certification of recharge safety.
+The 10 mg/L reference is the U.S. drinking-water maximum contaminant level for **nitrate as nitrogen (NO₃-N)**, not for nitrate ion (NO₃⁻).
 
 ## Run locally
 
-Download `index.html` and open it in any modern browser.
+Download `index.html` and open it in a modern web browser. No installation, account, server, or external software libraries are required.
 
-## Publish with GitHub Pages
+## Publish updates with GitHub Pages
 
-1. Add `index.html` and `README.md` to the root of a public GitHub repository.
-2. Open **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**, then select `main` and `/ (root)`.
-4. Save and open the GitHub Pages URL once deployment completes.
+1. Keep `index.html` and `README.md` in the repository's root directory.
+2. In **Settings → Pages**, select **Deploy from a branch**, `main`, and `/ (root)`.
+3. Commit changes to `index.html` or `README.md` to publish updates automatically.
 
 ## Status
 
-**Educational prototype.** Validate assumptions and calculations before using it for outreach or field-specific recharge recommendations.
+**Educational prototype.** The calculation is intended to demonstrate idealized dilution and should be validated and supplemented with field-specific data before use for management recommendations.
