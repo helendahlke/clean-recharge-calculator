@@ -6,8 +6,8 @@ An interactive, mobile-friendly educational tool for exploring how **residual so
 
 ## How to use it
 
-1. **Select residual soil nitrate-N** using one of eight bubbles: **5, 10, 15, 25, 40, 50, 75, or 100 lb N/acre**. The default is **25 lb N/acre**. These are illustrative nitrate inventories, not agronomic risk categories.
-2. **Move the applied recharge water slider** between **0.5 and 8 feet**, in 0.5-foot increments, to explore how the estimated pore water nitrate-N concentration changes. The default is **3 feet**.
+1. **Select residual soil nitrate-N** using one of ten predefined values: **5, 10, 25, 50, 100, 250, 500, 1,000, 1,500, or 2,000 lb N/acre**, or choose **Custom** to enter another nonnegative inventory. The default is **25 lb N/acre**. These are illustrative nitrate inventories, not agronomic risk categories.
+2. **Move the applied recharge water slider** starting at **0.5 feet**; its upper limit and step size automatically expand for high nitrate-N inventories, to explore how the estimated pore water nitrate-N concentration changes. The default is **3 feet**.
 3. **Read the estimated average pore water nitrate-N concentration**, expressed in **mg/L NO₃-N**.
 4. **Review the water-depth threshold** shown for a calculated average concentration **below 10 mg/L NO₃-N**, the drinking-water maximum contaminant level for nitrate expressed as nitrogen. The displayed threshold corresponds to exactly 10 mg/L in this idealized model; strictly less than 10 mg/L requires more water.
 5. **Explore the graph**, which plots estimated average pore water nitrate-N concentration against applied water depth. The dashed horizontal line marks 10 mg/L; the dot marks the selected water depth.
@@ -16,7 +16,7 @@ An interactive, mobile-friendly educational tool for exploring how **residual so
 
 Residual soil nitrate-N is nitrate nitrogen remaining in the soil after crop uptake. Farmers can estimate it from soil samples analyzed by a soil-testing laboratory.
 
-**The bubbles represent a nitrate-N inventory in pounds of nitrogen per acre (lb N/acre), not a concentration in ppm.** For interpretation, the tool assumes this inventory represents the upper **3 feet of soil**. If the soil laboratory reports nitrate-N in **ppm (mg/kg dry soil)**, converting that concentration to lb N/acre requires the **sampled depth and soil bulk density**. Do not enter a ppm value directly as lb N/acre.
+**The bubbles represent a nitrate-N inventory in pounds of nitrogen per acre (lb N/acre), not a concentration in ppm.** The inventory should correspond to the actual soil profile depth being evaluated. If the soil laboratory reports nitrate-N in **ppm (mg/kg dry soil)**, converting that concentration to lb N/acre requires the **sampled depth and soil bulk density**. Do not enter a ppm value directly as lb N/acre.
 
 Although soil texture and bulk density influence the conversion from ppm to lb N/acre, they are **not additional inputs to this calculator** once the nitrate-N inventory is known.
 
